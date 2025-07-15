@@ -6,9 +6,11 @@ app.secret_key = 'supersecretkey'
 
 DATABASE = 'chat.db'
 
-# Predefined credentials
-USERNAME = 'root'
-PASSWORD = 'toor'
+# Predefined users (username: password)
+USERS = {
+    'root': 'toor',
+    'admin': 'adminpass'
+}
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -34,7 +36,7 @@ def index():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username == USERNAME and password == PASSWORD:
+        if USERS.get(username) == password:
             session['user'] = username
             return redirect('/chat')
         else:
