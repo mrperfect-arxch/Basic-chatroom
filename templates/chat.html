@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacker Chat Room</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: monospace;
+        }
+        .chat-box {
+            width: 80%;
+            margin: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #00FF00;
+            padding: 10px;
+        }
+        input[type=text] {
+            width: 70%;
+            padding: 8px;
+            background: black;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+        }
+        button {
+            background: #00FF00;
+            color: black;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Welcome to Hacker Chat Room</h1>
+    <div class="chat-box">
+        {% for msg in messages %}
+            <p><b>{{ msg[0] }}:</b> {{ msg[1] }}</p>
+        {% endfor %}
+    </div>
+    <form method="POST" style="text-align:center; margin-top:20px;">
+        <input type="text" name="message" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+    <p style="text-align:center;"><a href="/logout">Logout</a></p>
+</body>
+</html>
